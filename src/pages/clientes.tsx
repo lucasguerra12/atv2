@@ -39,13 +39,13 @@ export default class Clientes extends Component<{}, ClientesState> {
 
     return (
       <div>
-        <h1>Página de Clientes</h1>
+        <div style={{ background: '#2b1f41', padding: '10px', color: 'white' , display: 'flex' }}>
+        <h1>Gerenciar Clientes</h1>
 
-        {/* Botão para adicionar novo cliente / Fechar formulário */}
-        <button onClick={this.alternarFormulario}>
-          {mostrarFormulario ? 'Cancelar Cadastro' : 'Adicionar Novo Cliente'}
+        <button onClick={this.alternarFormulario} style={{height: '40px' , marginTop: '60px', marginLeft: '20px',  backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '5px' }}>
+          {mostrarFormulario ? 'Cancelar Cadastro' : 'Adicionar Novo Cliente + '}
         </button>
-
+        </div>
         {/* Formulário de cadastro (será implementado no próximo passo) */}
         {mostrarFormulario && (
           <p>Placeholder para o Formulário de Clientes</p>

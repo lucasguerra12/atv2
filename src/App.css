@@ -3,8 +3,8 @@ body {
   margin: 0;
   /* As fontes e cores de fundo serão melhor controladas pelo Materialize ou por classes */
   /* Ou podemos manter a cor de fundo #2b1f41 se o Materialize não sobrepor */
-  background-color: #2b1f41; /* Mantém a cor de fundo principal */
-  color: #fff; /* Garante que o texto padrão seja branco para contraste */
+  background-color: #080213; /* Mantém a cor de fundo principal */
+  color: #ff0000; /* Garante que o texto padrão seja branco para contraste */
   font-family: Roboto, sans-serif; /* Materialize geralmente usa Roboto, podemos forçar aqui */
 }
 

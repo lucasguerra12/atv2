@@ -1,7 +1,8 @@
-/* src/pages/Home.css */
-/* Este arquivo agora será usado para estilos mais customizados
-   que o Materialize não cobre diretamente, como o banner de fundo,
-   posicionamento específico ou sombras customizadas que difiram do Materialize. */
+body {
+    
+    background-color: #422D5B;}
+    
+
 
    .home-container {
     padding: 0; /* Remover padding padrão se Materialize gerenciar o espaçamento */

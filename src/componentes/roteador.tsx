@@ -74,22 +74,63 @@ export default class Roteador extends Component<{}, State> {
     }
 
     handleClienteSubmit(cliente: Cliente) {
-        this.selecionarView("Clientes-Listar");
+        this.setState(prevState => {
+            if (cliente.id) {
+                // Se o cliente já tem um ID, é uma edição
+                const updatedClientes = prevState.clientes.map(c =>
+                    c.id === cliente.id ? cliente : c
+                );
+                return { clientes: updatedClientes, tela: "Clientes-Listar" };
+            } else {
+                // Se não tem ID, é um novo cadastro
+                const newId = prevState.clientes.length > 0 ? Math.max(...prevState.clientes.map(c => c.id || 0)) + 1 : 1;
+                const novoClienteComId = { ...cliente, id: newId };
+                return { clientes: [...prevState.clientes, novoClienteComId], tela: "Clientes-Listar" };
+            }
+        });
     }
 
     handleProdutoSubmit(produto: Produto) {
-        console.log("Produto salvo:", produto);
-        this.selecionarView("Produtos-Listar");
+        this.setState(prevState => {
+            if (produto.id) {
+                // Se o produto já tem um ID, é uma edição
+                const updatedProdutos = prevState.produtos.map(p =>
+                    p.id === produto.id ? produto : p
+                );
+                return { produtos: updatedProdutos, tela: "Produtos-Listar" };
+            } else {
+                // Se não tem ID, é um novo cadastro
+                const newId = prevState.produtos.length > 0 ? Math.max(...prevState.produtos.map(p => p.id || 0)) + 1 : 1;
+                const novoProdutoComId = { ...produto, id: newId };
+                return { produtos: [...prevState.produtos, novoProdutoComId], tela: "Produtos-Listar" };
+            }
+        });
     }
 
     handleServicoSubmit(servico: Servico) {
-        console.log("Serviço salvo:", servico);
-        this.selecionarView("Servicos-Listar");
+        this.setState(prevState => {
+            if (servico.id) {
+                // Se o serviço já tem um ID, é uma edição
+                const updatedServicos = prevState.servicos.map(s =>
+                    s.id === servico.id ? servico : s
+                );
+                return { servicos: updatedServicos, tela: "Servicos-Listar" };
+            } else {
+                // Se não tem ID, é um novo cadastro
+                const newId = prevState.servicos.length > 0 ? Math.max(...prevState.servicos.map(s => s.id || 0)) + 1 : 1;
+                const novoServicoComId = { ...servico, id: newId };
+                return { servicos: [...prevState.servicos, novoServicoComId], tela: "Servicos-Listar" };
+            }
+        });
     }
 
     handleConsumoSubmit(consumo: Consumo) {
-        console.log("Consumo registrado:", consumo);
-        this.selecionarView("Consumos-Listar");
+        this.setState(prevState => {
+            // Para consumo, sempre adicionamos um novo, não editamos um existente pelo formulário de cadastro.
+            const newId = prevState.consumos.length > 0 ? Math.max(...prevState.consumos.map(c => c.id || 0)) + 1 : 1;
+            const novoConsumoComId = { ...consumo, id: newId };
+            return { consumos: [...prevState.consumos, novoConsumoComId], tela: "Consumos-Listar" };
+        });
     }
 
     handleEditarCliente(cliente: Cliente) {
@@ -133,8 +174,6 @@ export default class Roteador extends Component<{}, State> {
         }));
         console.log("Serviço excluído:", id);
     }
-
-    
 
     render() {
         let barraNavegacao = <BarraNavegacao tema="purple" seletorView={this.selecionarView} />;

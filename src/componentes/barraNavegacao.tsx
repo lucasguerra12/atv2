@@ -45,7 +45,7 @@ export default class BarraNavegacao extends Component<props, State> {
                             key={subIndex}
                             href="#"
                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 transition-colors duration-300" // Corrigido 'hover:bg-light' para 'hover:bg-gray-200' e adicionado 'transition-colors'
-                            onClick={(e) => this.props.seletorView(`<span class="math-inline">\{grupo\.nome\}\-</span>{item}`, e)}
+                            onClick={(e) => this.props.seletorView(`${grupo.nome}-${item}`, e)}
                         >
                             {item}
                         </a>

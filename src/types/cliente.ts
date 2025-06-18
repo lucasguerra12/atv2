@@ -1,10 +1,8 @@
 export interface Cliente {
-    id: string; 
+    id?: number;
     nome: string;
-    nome_social : string;
     cpf: string;
     rg: string;
-    genero: string;
+    dataCadastro: Date;
     telefone: string;
-    dataCadastro: Date
-  }
+} 
